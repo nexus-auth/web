@@ -25,13 +25,9 @@ import { NavSecondary } from './nav-secondary'
 import { Separator } from './ui/separator'
 import { Comfortaa } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { useNexus } from '@nexus-auth/react-sdk'
 
 const data = {
-  user: {
-    name: 'Can',
-    email: 'mazlumcancevik@gmail.com',
-    avatar: '/avatars/shadcn.jpg'
-  },
   teams: [
     {
       name: 'Acme Inc',
@@ -84,6 +80,8 @@ const data = {
 const comfortaa = Comfortaa({ subsets: ['latin'] })
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useNexus()
+
   return (
     <Sidebar className="w-2/12 h-screen" collapsible="none" {...props}>
       <SidebarHeader>
@@ -100,9 +98,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <Separator />
         <NavSecondary items={data.navSecondary} />
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
+      <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
