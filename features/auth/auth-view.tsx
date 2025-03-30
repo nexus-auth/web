@@ -8,7 +8,7 @@ export default function AuthView() {
   const { nexusLogin } = useNexus()
 
   useEffect(() => {
-    nexusLogin({ closable: false, hideOverlay: true })
+    nexusLogin({ closable: false, hideOverlay: false })
   }, [])
 
   return (
