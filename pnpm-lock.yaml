@@ -32,9 +32,15 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.1.8
         version: 1.1.8(@types/react-dom@19.0.3(@types/react@19.0.9))(@types/react@19.0.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tanstack/react-query':
+        specifier: ^5.71.0
+        version: 5.71.0(react@19.0.0)
       animated-backgrounds:
         specifier: ^1.1.0
         version: 1.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      axios:
+        specifier: ^1.8.4
+        version: 1.8.4
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -63,6 +69,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.2.0
+      '@types/axios':
+        specifier: ^0.14.4
+        version: 0.14.4
       '@types/node':
         specifier: ^20
         version: 20.17.19
@@ -755,6 +764,10 @@ packages:
     resolution: {integrity: sha512-Udhlz9xHwk0iB7eLDchIqvu666NZFxPZZF80KnL8sZy+5J0kMvnJkzQNYRJwF70g8Vc1nn0TSMkPJgvx6+Pn4g==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@types/axios@0.14.4':
+    resolution: {integrity: sha512-9JgOaunvQdsQ/qW2OPmE5+hCeUB52lQSolecrFrthct55QekhmXEwT203s20RL+UHtCQc15y3VXpby9E7Kkh/g==}
+    deprecated: This is a stub types definition. axios provides its own type definitions, so you do not need this installed.
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -2882,6 +2895,12 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.71.0
       react: 19.0.0
+
+  '@types/axios@0.14.4':
+    dependencies:
+      axios: 1.8.4
+    transitivePeerDependencies:
+      - debug
 
   '@types/estree@1.0.6': {}
 

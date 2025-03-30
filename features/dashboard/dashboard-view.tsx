@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import AppCard from './components/app-card'
 import { useNexus } from '@nexus-auth/react-sdk'
+import { useApps } from './api/use-applications'
 
 export default function DashboardView() {
   const { user } = useNexus()
+  const { data } = useApps()
 
   return (
     user && (
@@ -26,7 +28,9 @@ export default function DashboardView() {
           </div>
 
           <div className="flex gap-5 flex-wrap">
-            <AppCard appName="Randevumo" />
+            {data?.data?.map((app) => (
+              <AppCard key={app.id} appName={app.name} />
+            ))}
           </div>
         </div>
       </div>
