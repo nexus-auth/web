@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import Providers from '@/components/providers'
 import AuthGuard from '@/components/auth-guard'
+import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({
   subsets: ['latin']
@@ -21,7 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <Providers>
-          <AuthGuard>{children}</AuthGuard>
+          <AuthGuard>
+            {children}
+            <Toaster />
+          </AuthGuard>
         </Providers>
       </body>
     </html>

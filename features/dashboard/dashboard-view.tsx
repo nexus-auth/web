@@ -1,10 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Plus } from 'lucide-react'
 import AppCard from './components/app-card'
 import { useNexus } from '@nexus-auth/react-sdk'
-import { useApps } from './api/use-applications'
+import { useApps } from './api/use-apps'
+import CreateAppDialog from './dialogs/new-app'
 
 export default function DashboardView() {
   const { user } = useNexus()
@@ -21,10 +20,7 @@ export default function DashboardView() {
         <div className="flex flex-col gap-8">
           <div className="flex justify-between">
             <h1 className="text-2xl font-semibold">Applications</h1>
-            <Button size="sm" className="flex items-center gap-2">
-              <Plus />
-              <span>New app</span>
-            </Button>
+            <CreateAppDialog />
           </div>
 
           <div className="flex gap-5 flex-wrap">
