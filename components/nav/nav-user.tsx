@@ -28,16 +28,22 @@ import {
 } from '@/components/ui/sidebar'
 import { useNexus } from '@nexus-auth/react-sdk'
 import { useRouter } from 'next/navigation'
-import { User } from '@/types/user'
+import { Skeleton } from '../ui/skeleton'
 
-export function NavUser({ user }: { user: User }) {
+export function NavUser() {
   const { isMobile } = useSidebar()
-  const { nexusLogout } = useNexus()
+  const { nexusLogout, ready, user } = useNexus()
   const router = useRouter()
 
   function handleLogout() {
     nexusLogout()
     router.push('/auth')
+  }
+
+  const dataReady = ready && user
+
+  if (!dataReady) {
+    return <Skeleton className="w-full h-10" />
   }
 
   return (

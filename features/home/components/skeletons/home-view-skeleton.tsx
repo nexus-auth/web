@@ -1,7 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton'
 import AppCardSkeleton from './app-card-skeleton'
 
-export default function DashboardViewSkeleton() {
+export default function HomeViewSkeleton() {
   return (
     <div className="w-6/12 flex flex-col gap-y-10">
       <div className="flex flex-col gap-y-2">

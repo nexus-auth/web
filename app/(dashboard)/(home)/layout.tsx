@@ -1,11 +1,11 @@
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
-import { HomeSidebar } from '@/features/dashboard/components/home-sidebar'
+import { HomeSidebar } from '@/features/home/components/home-sidebar'
 
 interface Props {
   children: React.ReactNode
 }
 
-export default function DashboardLayout({ children }: Props) {
+export default function HomeLayout({ children }: Props) {
   return (
     <SidebarProvider>
       <HomeSidebar />

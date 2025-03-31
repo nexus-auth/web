@@ -4,16 +4,16 @@ import AppCard from './components/app-card'
 import { useNexus } from '@nexus-auth/react-sdk'
 import { useApps } from './api/use-apps'
 import CreateAppDialog from './dialogs/new-app'
-import DashboardViewSkeleton from './components/skeletons/dashboard-view-skeleton'
+import HomeViewSkeleton from './components/skeletons/home-view-skeleton'
 
-export default function DashboardView() {
+export default function HomeView() {
   const { user, ready } = useNexus()
   const { data } = useApps()
 
   const dataReady = ready && data && user
 
   if (!dataReady) {
-    return <DashboardViewSkeleton />
+    return <HomeViewSkeleton />
   }
 
   return (

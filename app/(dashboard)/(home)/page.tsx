@@ -1,5 +1,5 @@
-import DashboardView from '@/features/dashboard/dashboard-view'
+import HomeView from '@/features/home/home-view'
 
-export default function DashboardPage() {
-  return <DashboardView />
+export default function HomePage() {
+  return <HomeView />
 }

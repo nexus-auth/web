@@ -23,7 +23,6 @@ import {
 } from '@/components/ui/sidebar'
 import { Comfortaa } from 'next/font/google'
 import { cn } from '@/lib/utils'
-import { useNexus } from '@nexus-auth/react-sdk'
 import { Separator } from '@/components/ui/separator'
 import { NavSecondary } from '@/components/nav/nav-secondary'
 
@@ -80,8 +79,6 @@ const data = {
 const comfortaa = Comfortaa({ subsets: ['latin'] })
 
 export function HomeSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user } = useNexus()
-
   return (
     <Sidebar className="w-2/12 h-screen" collapsible="none" {...props}>
       <SidebarHeader>
@@ -96,7 +93,9 @@ export function HomeSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
         <Separator />
         <NavSecondary className="px-5" items={data.navSecondary} />
       </SidebarContent>
-      <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

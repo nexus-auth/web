@@ -12,7 +12,6 @@ import {
   SidebarHeader,
   SidebarRail
 } from '@/components/ui/sidebar'
-import { useNexus } from '@nexus-auth/react-sdk'
 import { AppSwitcher } from './app-switcher'
 
 const data = {
@@ -95,8 +94,6 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user } = useNexus()
-
   return (
     <Sidebar className="w-2/12 h-screen" collapsible="none" {...props}>
       <SidebarHeader>
@@ -105,7 +102,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
