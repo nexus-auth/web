@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { GalleryVerticalEnd, Home, Settings, UsersIcon, WalletCardsIcon } from 'lucide-react'
+import { GalleryVerticalEnd } from 'lucide-react'
 
 import { NavMain } from '@/components/nav/nav-main'
 import { NavUser } from '@/components/nav/nav-user'
@@ -13,94 +13,24 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar'
 import { AppSwitcher } from './app-switcher'
+import { appNavbarConfig } from '../config/app-navbar-config'
 
-const data = {
-  apps: [
-    {
-      name: 'Randevumo',
-      logo: GalleryVerticalEnd,
-      plan: 'Dev'
-    }
-  ],
-  navMain: [
-    {
-      title: 'Home',
-      url: '#',
-      icon: Home
-    },
-    {
-      title: 'Configuration',
-      url: '#',
-      icon: Settings,
-      isActive: true,
-      items: [
-        {
-          title: 'App settings',
-          url: '#'
-        },
-        {
-          title: 'UI components',
-          url: '#'
-        },
-        {
-          title: 'Integrations',
-          url: '#'
-        },
-        {
-          title: 'Webhooks',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Wallet infrastructure',
-      url: '#',
-      icon: WalletCardsIcon,
-      items: [
-        {
-          title: 'Wallets',
-          url: '#'
-        },
-        {
-          title: 'Smart wallets',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'User management',
-      url: '#',
-      icon: UsersIcon,
-      items: [
-        {
-          title: 'Authentication',
-          url: '#'
-        },
-        {
-          title: 'Account funding',
-          url: '#'
-        },
-        {
-          title: 'Global wallet',
-          url: '#'
-        },
-        {
-          title: 'Users',
-          url: '#'
-        }
-      ]
-    }
-  ]
-}
+const apps = [
+  {
+    name: 'Randevumo',
+    logo: GalleryVerticalEnd,
+    plan: 'Dev'
+  }
+]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="w-2/12 h-screen" collapsible="none" {...props}>
       <SidebarHeader>
-        <AppSwitcher apps={data.apps} />
+        <AppSwitcher apps={apps} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={appNavbarConfig.navMain} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser />
