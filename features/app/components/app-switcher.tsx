@@ -1,7 +1,6 @@
 'use client'
 
-import * as React from 'react'
-import { ChevronsUpDown, Plus } from 'lucide-react'
+import { ChevronsUpDown, GalleryVerticalEnd, Plus } from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -18,21 +17,43 @@ import {
   SidebarMenuItem,
   useSidebar
 } from '@/components/ui/sidebar'
+import { App } from '@/types/app'
+import { useApps } from '@/features/home/api/use-apps'
+import { useParams, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 
-export function AppSwitcher({
-  apps
-}: {
-  apps: {
-    name: string
-    logo: React.ElementType
-    plan: string
-  }[]
-}) {
+export function AppSwitcher() {
   const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(apps[0])
+  const [apps, setApps] = useState<App[] | null>(null)
+  const [activeApp, setActiveApp] = useState<App | null>(null)
 
-  if (!activeTeam) {
-    return null
+  const router = useRouter()
+  const params = useParams()
+  const { data, isLoading } = useApps()
+
+  useEffect(() => {
+    if (!isLoading && data?.data?.length) {
+      setApps(data.data)
+      setActiveApp(data.data[0])
+    }
+  }, [data, isLoading])
+
+  useEffect(() => {
+    if (apps) {
+      const foundApp = apps.find((app) => app.id.toString() === params.id)
+      setActiveApp(foundApp || apps[0])
+    }
+  }, [params.id, apps])
+
+  useEffect(() => {
+    if (activeApp) {
+      router.push(`/apps/${activeApp.id}`)
+    }
+  }, [router, activeApp])
+
+  if (isLoading || !apps) {
+    return <Skeleton className="w-full h-12" />
   }
 
   return (
@@ -45,11 +66,11 @@ export function AppSwitcher({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <activeTeam.logo className="size-4" />
+                <GalleryVerticalEnd className="size-4" />
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{activeTeam.name}</span>
-                <span className="truncate text-xs">{activeTeam.plan}</span>
+                <span className="truncate font-semibold">{activeApp?.name}</span>
+                <span className="truncate text-xs">Dev</span>
               </div>
               <ChevronsUpDown className="ml-auto" />
             </SidebarMenuButton>
@@ -61,16 +82,16 @@ export function AppSwitcher({
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs text-muted-foreground">Apps</DropdownMenuLabel>
-            {apps.map((team, index) => (
+            {apps.map((app, index) => (
               <DropdownMenuItem
-                key={team.name}
-                onClick={() => setActiveTeam(team)}
+                key={app.name}
+                onClick={() => setActiveApp(app)}
                 className="gap-2 p-2"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border">
-                  <team.logo className="size-4 shrink-0" />
+                  <GalleryVerticalEnd className="size-4 shrink-0" />
                 </div>
-                {team.name}
+                {app.name}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}

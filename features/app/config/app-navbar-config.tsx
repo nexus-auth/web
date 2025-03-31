@@ -5,7 +5,7 @@ export const appNavbarConfig: NavbarConfig = {
   navMain: [
     {
       title: 'Home',
-      url: '#',
+      url: '/',
       icon: Home
     },
     {
@@ -36,6 +36,7 @@ export const appNavbarConfig: NavbarConfig = {
       title: 'User management',
       url: '#',
       icon: UsersIcon,
+      isActive: true,
       items: [
         {
           title: 'Authentication',
