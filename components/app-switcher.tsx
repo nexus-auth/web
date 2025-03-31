@@ -19,17 +19,17 @@ import {
   useSidebar
 } from '@/components/ui/sidebar'
 
-export function TeamSwitcher({
-  teams
+export function AppSwitcher({
+  apps
 }: {
-  teams: {
+  apps: {
     name: string
     logo: React.ElementType
     plan: string
   }[]
 }) {
   const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [activeTeam, setActiveTeam] = React.useState(apps[0])
 
   if (!activeTeam) {
     return null
@@ -60,8 +60,8 @@ export function TeamSwitcher({
             side={isMobile ? 'bottom' : 'right'}
             sideOffset={4}
           >
-            <DropdownMenuLabel className="text-xs text-muted-foreground">Teams</DropdownMenuLabel>
-            {teams.map((team, index) => (
+            <DropdownMenuLabel className="text-xs text-muted-foreground">Apps</DropdownMenuLabel>
+            {apps.map((team, index) => (
               <DropdownMenuItem
                 key={team.name}
                 onClick={() => setActiveTeam(team)}
@@ -79,7 +79,7 @@ export function TeamSwitcher({
               <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                 <Plus className="size-4" />
               </div>
-              <div className="font-medium text-muted-foreground">Add team</div>
+              <div className="font-medium text-muted-foreground">Create app</div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

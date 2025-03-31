@@ -354,7 +354,7 @@ const SidebarHeader = React.forwardRef<HTMLDivElement, React.ComponentProps<'div
       <div
         ref={ref}
         data-sidebar="header"
-        className={cn('flex flex-col gap-2 p-2', className)}
+        className={cn('flex flex-col gap-2 p-5', className)}
         {...props}
       />
     )
@@ -553,7 +553,7 @@ const SidebarMenuButton = React.forwardRef<
         data-sidebar="menu-button"
         data-size={size}
         data-active={isActive}
-        className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+        className={cn(sidebarMenuButtonVariants({ variant, size }), className, 'py-6')}
         {...props}
       />
     )

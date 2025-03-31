@@ -25,7 +25,7 @@ export default function DashboardView() {
 
           <div className="flex gap-5 flex-wrap">
             {data?.data?.map((app) => (
-              <AppCard key={app.id} appName={app.name} />
+              <AppCard key={app.id} appName={app.name} navUrl={`/apps/${app.id}`} />
             ))}
           </div>
         </div>

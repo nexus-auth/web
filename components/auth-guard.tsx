@@ -9,14 +9,14 @@ interface Props {
 }
 
 export default function AuthGuard({ children }: Props) {
-  const { isAuthenticated } = useNexus()
+  const { isAuthenticated, ready } = useNexus()
   const router = useRouter()
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (ready && !isAuthenticated) {
       router.push('/auth')
     }
-  }, [isAuthenticated, router])
+  }, [isAuthenticated, router, ready])
 
   return children
 }

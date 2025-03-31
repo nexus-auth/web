@@ -1,16 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {
-  AudioWaveform,
-  Command,
-  Folder,
-  GalleryVerticalEnd,
-  LayoutGrid,
-  LifeBuoy,
-  ReceiptText,
-  UsersRound
-} from 'lucide-react'
+import { GalleryVerticalEnd, Home, Settings, UsersIcon, WalletCardsIcon } from 'lucide-react'
 
 import { NavMain } from '@/components/nav-main'
 import { NavUser } from '@/components/nav-user'
@@ -21,63 +12,87 @@ import {
   SidebarHeader,
   SidebarRail
 } from '@/components/ui/sidebar'
-import { NavSecondary } from './nav-secondary'
-import { Separator } from './ui/separator'
-import { Comfortaa } from 'next/font/google'
-import { cn } from '@/lib/utils'
 import { useNexus } from '@nexus-auth/react-sdk'
+import { AppSwitcher } from './app-switcher'
 
 const data = {
-  teams: [
+  apps: [
     {
-      name: 'Acme Inc',
+      name: 'Randevumo',
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise'
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup'
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free'
+      plan: 'Dev'
     }
   ],
   navMain: [
     {
-      title: 'Applications',
+      title: 'Home',
       url: '#',
-      icon: LayoutGrid,
-      isActive: true
+      icon: Home
     },
     {
-      title: 'Team',
+      title: 'Configuration',
       url: '#',
-      icon: UsersRound
+      icon: Settings,
+      isActive: true,
+      items: [
+        {
+          title: 'App settings',
+          url: '#'
+        },
+        {
+          title: 'UI components',
+          url: '#'
+        },
+        {
+          title: 'Integrations',
+          url: '#'
+        },
+        {
+          title: 'Webhooks',
+          url: '#'
+        }
+      ]
     },
     {
-      title: 'Billing',
+      title: 'Wallet infrastructure',
       url: '#',
-      icon: ReceiptText
-    }
-  ],
-  navSecondary: [
-    {
-      title: 'Docs',
-      url: '#',
-      icon: Folder
+      icon: WalletCardsIcon,
+      items: [
+        {
+          title: 'Wallets',
+          url: '#'
+        },
+        {
+          title: 'Smart wallets',
+          url: '#'
+        }
+      ]
     },
     {
-      title: 'Support',
+      title: 'User management',
       url: '#',
-      icon: LifeBuoy
+      icon: UsersIcon,
+      items: [
+        {
+          title: 'Authentication',
+          url: '#'
+        },
+        {
+          title: 'Account funding',
+          url: '#'
+        },
+        {
+          title: 'Global wallet',
+          url: '#'
+        },
+        {
+          title: 'Users',
+          url: '#'
+        }
+      ]
     }
   ]
 }
-
-const comfortaa = Comfortaa({ subsets: ['latin'] })
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useNexus()
@@ -85,18 +100,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar className="w-2/12 h-screen" collapsible="none" {...props}>
       <SidebarHeader>
-        <div>
-          <h1
-            className={cn(comfortaa.className, 'text-xl text-black font-extrabold px-2 pt-3 mb-3')}
-          >
-            Nexus Auth
-          </h1>
-        </div>
+        <AppSwitcher apps={data.apps} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <Separator />
-        <NavSecondary items={data.navSecondary} />
       </SidebarContent>
       <SidebarFooter>{user && <NavUser user={user} />}</SidebarFooter>
       <SidebarRail />
