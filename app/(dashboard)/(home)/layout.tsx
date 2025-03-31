@@ -1,5 +1,5 @@
-import { HomeSidebar } from '@/components/home-sidebar'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import { HomeSidebar } from '@/features/dashboard/components/home-sidebar'
 
 interface Props {
   children: React.ReactNode

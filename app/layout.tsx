@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.css'
 import Providers from '@/components/providers'
-import AuthGuard from '@/components/auth-guard'
+import AuthGuard from '@/components/guards/auth-guard'
 import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({

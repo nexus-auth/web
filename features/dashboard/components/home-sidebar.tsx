@@ -12,8 +12,8 @@ import {
   UsersRound
 } from 'lucide-react'
 
-import { NavMain } from '@/components/nav-main'
-import { NavUser } from '@/components/nav-user'
+import { NavMain } from '@/components/nav/nav-main'
+import { NavUser } from '@/components/nav/nav-user'
 import {
   Sidebar,
   SidebarContent,
@@ -21,11 +21,11 @@ import {
   SidebarHeader,
   SidebarRail
 } from '@/components/ui/sidebar'
-import { NavSecondary } from './nav-secondary'
-import { Separator } from './ui/separator'
 import { Comfortaa } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { useNexus } from '@nexus-auth/react-sdk'
+import { Separator } from '@/components/ui/separator'
+import { NavSecondary } from '@/components/nav/nav-secondary'
 
 const data = {
   teams: [
