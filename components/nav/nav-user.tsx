@@ -1,14 +1,6 @@
 'use client'
 
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-  User as UserIcon
-} from 'lucide-react'
+import { ChevronsUpDown, LogOut, Sparkles, User as UserIcon } from 'lucide-react'
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
