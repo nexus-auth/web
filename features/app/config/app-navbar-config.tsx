@@ -21,14 +21,6 @@ export const appNavbarConfig: NavbarConfig = {
         {
           title: 'UI components',
           url: '#'
-        },
-        {
-          title: 'Integrations',
-          url: '#'
-        },
-        {
-          title: 'Webhooks',
-          url: '#'
         }
       ]
     },
@@ -40,14 +32,6 @@ export const appNavbarConfig: NavbarConfig = {
       items: [
         {
           title: 'Authentication',
-          url: '#'
-        },
-        {
-          title: 'Account funding',
-          url: '#'
-        },
-        {
-          title: 'Global wallet',
           url: '#'
         },
         {

@@ -43,11 +43,7 @@ export function NavMain({
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton
-                  className={cn(item.isActive && 'bg-zinc-100 border')}
-                  tooltip={item.title}
-                  onClick={() => router.push(item.url)}
-                >
+                <SidebarMenuButton tooltip={item.title} onClick={() => router.push(item.url)}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                   {item.items && (
